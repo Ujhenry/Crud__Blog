@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Crud</title>
+    <link href="http://fonts-googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+<header>
+    <h1><a href="{% url 'home' %}"> Django Crud </a></h1>
+</header>
+<div class="nav-right">
+    <a href="{% url 'post_new' %}"> New Post </a>
+</div>
+
+<div>
+    {% block content %}
+        {% if user.is_authenticated %}
+             Hi {{ user.username }}!
+           {% else %}
+               <p>You are not logged in</p>
+             <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
+    {% endblock %}
+</div>
+</body>
+</html>
